@@ -28,8 +28,9 @@ function TimePicker({
    inputClassName = null,
 }) {
    const [isOpen, setIsOpen] = useState(initialIsOpenValue);
-   const [height, setHeight] = useState(cellHeight);
    const [inputValue, setInputValue] = useState(initialValue);
+
+   useEffect(() => { setInputValue(initialValue) }, [initialValue]);
 
    const handleClick = () => {
       setIsOpen(!isOpen);
@@ -50,7 +51,7 @@ function TimePicker({
 
    const params = {
       onChange,
-      height,
+      height: cellHeight,
       onSave,
       onCancel,
       cancelButtonText,
